@@ -11,16 +11,16 @@
 
 <body>
     <div class="preloader">
-        <img src="ite-logo2-anim.gif" alt="" width="150px">
+        <img src="./logo2.2.gif" alt="" width="100px">
         <div class="dots-container">
             <div class="dot red"></div>
             <div class="dot green"></div>
             <div class="dot yellow"></div>
         </div>
 
-        <div class="preloader-text">
+        <!-- <div class="preloader-text">
             Loading...
-        </div>
+        </div> -->
     </div>
 
 
@@ -46,14 +46,7 @@
     </script>
 
     <!-- script 3 with cookie accept -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#blog, #logo").click(function () {
-                $("#container").load("/blog");
-                document.getElementById("preloader").className = 'test';
-            });
-        });
-    </script>
+ 
     <script>
         function createCookie(name, value, days) {
             if (days) {
@@ -73,6 +66,18 @@
                 if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
             }
             return null;
+        }
+
+        $(window).load(function () {
+            if (readCookie('referer') == null) {
+                $("#preloader").delay(700).fadeOut("slow");
+            }
+            createCookie('referer', 1, 0);
+        });
+        if (readCookie('referer') == null) {
+            document.write(
+                "<style>.preloader {background-image: url(../images/preload.png); background-color:#000; z-index:99;}</style>"
+                );
         }
     </script>
 

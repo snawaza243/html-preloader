@@ -32,8 +32,8 @@
 
 .preloader .dot {
     background: red;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     margin: 0 5px;
 }
