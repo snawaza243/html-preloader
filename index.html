@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="preloader">
+        <img src="ite-logo2-anim.gif" alt="" width="150px">
+        <div class="dots-container">
+            <div class="dot red"></div>
+            <div class="dot green"></div>
+            <div class="dot yellow"></div>
+        </div>
+
+        <div class="preloader-text">
+            Loading...
+        </div>
+    </div>
+
+
+    <!-- script 1 normal all page with render time -->
+    <script>
+        const preloader = document.querySelector(".preloader");
+        const preloaderDuration = 2000;
+
+        const hidePreloader = () => {
+            setTimeout(() => {
+                preloader.classList.add("hide");
+            }, preloaderDuration);
+        }
+        window.addEventListener("load", hidePreloader);
+    </script>
+
+
+    <!-- script 2 normal all page with render time -->
+    <script>
+        $(window).load(function () {
+            $(".preloader").delay(700).fadeOut("slow");
+        })
+    </script>
+
+    <!-- script 3 with cookie accept -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#blog, #logo").click(function () {
+                $("#container").load("/blog");
+                document.getElementById("preloader").className = 'test';
+            });
+        });
+    </script>
+    <script>
+        function createCookie(name, value, days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            } else var expires = "";
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+
+
+    <!-- script 4 once render  -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(window).load(function () {
+                function Preloader() {
+                    var preloader = $('.loader');
+                    preloader.delay(1000).fadeOut(500);
+                    var preloader = $('.preloader');
+                    preloader.delay(1500).slideUp(500);
+                }
+                if (!sessionStorage.getItem('doNotShow')) {
+                    sessionStorage.setItem('doNotShow', 'true');
+                    Preloader();
+                } else {
+                    $('.loader, .preloader').hide();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

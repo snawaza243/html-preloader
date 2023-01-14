@@ -1,0 +1,13 @@
+
+May be the right to use for blog
+
+css part
+b]]></b:skin> or </style> above
+
+html part
+</body> above
+
+
+condition wrapping
+<b:if cond= 'data:blog.url == "URL"'>
+</b:if>
